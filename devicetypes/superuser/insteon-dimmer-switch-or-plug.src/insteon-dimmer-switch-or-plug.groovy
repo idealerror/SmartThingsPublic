@@ -142,6 +142,7 @@ def poll()
 {
     log.debug "Polling.."
     getStatus()
+    runIn(180, refresh)
 }
 
 def ping()
@@ -151,9 +152,7 @@ def ping()
 }
 
 def initialize(){
-    log.debug "Initializing.."
-    def freq = 1
-    schedule("0 0/1 * * * ?", poll)
+    poll()
 }
 
 def getStatus() {
